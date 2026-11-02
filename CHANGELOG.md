@@ -4,6 +4,17 @@
 
 > **v2.0.0 以降は Go 実装（`aws-sso-profiles`）が本体です。** v1.x は Bash 版の履歴で、Bash 版は撤去済みです（コードは git 履歴を参照）。
 
+## [v2.2.1] - Homebrew cask の deprecation warning 解消
+
+### Fixed
+- **`brew install` / `upgrade` 時の `Calling postflight is deprecated!` warning を解消。** Homebrew が cask の `postflight` を非推奨化したため、goreleaser v2.19.0 で追加された `hooks.post.install_steps` に移行し、quarantine 除去 hook を `postflight_steps` で生成するようにした（挙動は従来と同じ）。
+
+### Added
+- アカウント / ロール増減時の定常運用（Day-2）手順を [docs/setup-guide.md](docs/setup-guide.md) に明文化。
+
+### Changed
+- 依存更新: AWS SDK for Go v2、`golang.org/x/sync`、`santhosh-tekuri/jsonschema/v6`、`rogpeppe/go-internal`、GitHub Actions（`actions/checkout` / `actions/setup-go`）。
+
 ## [v2.2.0] - セキュリティ・ハードニング
 
 ### Security
