@@ -52,7 +52,7 @@ homebrew_casks:
     # Gatekeeper does not flag it as "damaged" on first run.
     hooks:
       post:
-        install: |
-          if OS.mac?
-            system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{staged_path}/aws-sso-profiles"]
+        install_steps: |
+          on_macos do
+            run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "{{ .StagedPath }}/aws-sso-profiles"]
           end
